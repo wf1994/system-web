@@ -1,0 +1,37 @@
+// 全局样式表，在这里会修改一些antdesignVue的默认样式
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 1366px;
+  font-size: 16px;
+}
+// 修改菜单暗色主题的背景色
+.ant-menu,
+.ant-menu-dark, .ant-menu-sub {
+  background-color: #383b46;
+  .ant-menu-item {
+    height: 48px;
+    line-height: 48px;
+    font-size: 1.125rem;
+    color: #fff;
+  }
+}
+// 修改选中菜单项的背景色
+.ant-menu-item-selected{
+  background-color: #128075!important;
+}
+// 修改展开/收起菜单按钮背景色
+.ant-layout-sider-trigger {
+  background-color: #2f323b;
+}
+// 修改Button默认样式
+.ant-btn{
+  border-radius: 2px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: 'PingFangSC-Regular';
+}
