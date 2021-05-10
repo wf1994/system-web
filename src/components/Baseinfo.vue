@@ -37,7 +37,7 @@
       <a-layout style="padding: 0 24px 24px">
         <!-- 面包屑区域 -->
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>公司信息{{ activeBreadcrumb }}</a-breadcrumb-item>
+          <a-breadcrumb-item>{{ activeBreadcrumb }}</a-breadcrumb-item>
         </a-breadcrumb>
         <!-- 主题内容区域 -->
         <a-layout-content
@@ -55,8 +55,35 @@
       </a-layout>
 	</a-layout>
 </a-layout>
-</template>
 
+</template>
+<script>
+export default {
+  data() {
+    return {
+      collapsed: false, // 侧边栏折叠
+      activePath: '/baseinfo', // 当前点击路由
+      activeBreadcrumb: window.sessionStorage.getItem('activeBreadcrumb')
+    }
+  },
+  methods: {
+    // 点击菜单项跳转事件
+    linkTo(link) {
+      window.sessionStorage.setItem('activePath', link.key)
+      window.sessionStorage.setItem('activeBreadcrumb', link.item.title)
+      this.activeBreadcrumb = link.item && link.item.title
+      this.$router.push(link.key)
+      this.activePath = link.key
+    }
+  },
+  computed: {
+    defaultSelectedKeys() {
+      const tempPath = [window.sessionStorage.getItem('activePath')]
+      return tempPath
+    }
+  }
+}
+</script>
 <style lang="less" scoped>
 .ant-layout {
   height: 100%;
